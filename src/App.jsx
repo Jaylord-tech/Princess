@@ -146,7 +146,7 @@ function ConfettiCanvas() {
   return null;
 }
 
-function Hero() {
+function Hero({ onOpenSurprise }) {
   return (
     <section id="top" className="animated-section hero-section relative isolate min-h-dvh overflow-hidden">
       <FloatingDecor />
@@ -166,10 +166,7 @@ function Hero() {
           </p>
           <button
             className="primary-button mt-8"
-            onClick={() => {
-              scrollToId('message');
-              triggerConfetti();
-            }}
+            onClick={onOpenSurprise}
           >
             <Gift size={19} aria-hidden="true" /> Open Your Birthday Surprise
           </button>
@@ -352,7 +349,16 @@ function FinalSection() {
 
 export default function App() {
   const [loading, setLoading] = useState(true);
+  const [surpriseOpened, setSurpriseOpened] = useState(false);
   const reducedMotion = useReducedMotion();
+
+  const handleOpenSurprise = () => {
+    setSurpriseOpened(true);
+    triggerConfetti();
+    window.setTimeout(() => {
+      scrollToId('message');
+    }, 120);
+  };
 
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -372,12 +378,16 @@ export default function App() {
       <CustomCursor />
       <ConfettiCanvas />
       <main>
-        <Hero />
-        <MessageSection />
-        <ReasonsSection />
-        <GallerySection />
-        <WishesSection />
-        <FinalSection />
+        <Hero onOpenSurprise={handleOpenSurprise} />
+        {surpriseOpened && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7 }}>
+            <MessageSection />
+            <ReasonsSection />
+            <GallerySection />
+            <WishesSection />
+            <FinalSection />
+          </motion.div>
+        )}
       </main>
       <footer className="bg-burgundy px-5 py-8 text-center text-sm text-white/80">
         Made with endless love for Akinwumi Oluwabukolami Princess by her love, JAY ♥ {new Date().getFullYear()}
