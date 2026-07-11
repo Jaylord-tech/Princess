@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react';
+import { Music, Volume2, VolumeX } from 'lucide-react';
 import { birthdayConfig } from '../data/siteData';
 
 export default function MusicControl({ autoStart = false }) {
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const autoStartAttemptedRef = useRef(false);
   const [muted, setMuted] = useState(false);
   const [showPrompt, setShowPrompt] = useState(true);
 
@@ -15,34 +15,15 @@ export default function MusicControl({ autoStart = false }) {
 
   useEffect(() => {
     const audio = audioRef.current;
-    if (!autoStart || !audio || isPlaying) return;
+    if (!autoStart || !audio || autoStartAttemptedRef.current) return;
 
+    autoStartAttemptedRef.current = true;
     setShowPrompt(false);
     audio.play()
-      .then(() => setIsPlaying(true))
       .catch(() => {
-        setIsPlaying(false);
         setShowPrompt(true);
       });
-  }, [autoStart, isPlaying]);
-
-  const togglePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    setShowPrompt(false);
-    if (isPlaying) {
-      audio.pause();
-      setIsPlaying(false);
-      return;
-    }
-    try {
-      await audio.play();
-      setIsPlaying(true);
-    } catch {
-      setIsPlaying(false);
-      setShowPrompt(true);
-    }
-  };
+  }, [autoStart]);
 
   return (
     <div className="music-control fixed bottom-5 right-5 z-40 flex items-end gap-3">
@@ -60,9 +41,6 @@ export default function MusicControl({ autoStart = false }) {
         )}
       </AnimatePresence>
       <div className="flex rounded-full border border-white/50 bg-burgundy/90 p-2 text-white shadow-glow backdrop-blur">
-        <button className="icon-button" onClick={togglePlay} aria-label={isPlaying ? 'Pause music' : 'Play music'}>
-          {isPlaying ? <Pause size={18} /> : <Play size={18} />}
-        </button>
         <button className="icon-button" onClick={() => setMuted((value) => !value)} aria-label={muted ? 'Unmute music' : 'Mute music'}>
           {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
