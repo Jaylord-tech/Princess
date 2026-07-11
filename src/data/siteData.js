@@ -6,9 +6,9 @@ export const birthdayConfig = {
   songTitle: 'Fall For You',
   songArtist: 'Neriel',
   backgroundSong: mediaPath('love-song.mp4'),
-  heroBackground: mediaPath('assets/romantic-hero.png'),
+  heroBackground: mediaPath('assets/romantic-hero.webp'),
   heroImage: {
-    src: mediaPath('assets/image.png'),
+    src: mediaPath('assets/image.webp'),
     alt: 'Akinwumi Oluwabukolami Princess smiling at her birthday celebration'
   }
 };
@@ -32,11 +32,11 @@ export const reasons = [
 
 export const galleryImages = [
   // Add photos/videos to public/assets as m1.png through m5.png, or update the paths below.
-  { src: mediaPath('assets/m1.png'), alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
-  { src: mediaPath('assets/image.png'), alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
-  { src: mediaPath('assets/m3.mp4'), alt: 'A treasured video memory with Princess', caption: 'A memory I will always treasure', type: 'video' },
-  { src: mediaPath('assets/m4.mp4'), alt: 'A beautiful moment with my favourite person', caption: 'My favourite person', type: 'video' },
-  { src: mediaPath('assets/m2.mp4'), alt: 'A beautiful video memory of Princess', caption: 'My Princess', type: 'video' }
+  { src: mediaPath('assets/m1.webp'), alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
+  { src: mediaPath('assets/image.webp'), alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
+  { src: mediaPath('assets/m3-fast.mp4'), alt: 'A treasured video memory with Princess', caption: 'A memory I will always treasure', type: 'video' },
+  { src: mediaPath('assets/m4-fast.mp4'), alt: 'A beautiful moment with my favourite person', caption: 'My favourite person', type: 'video' },
+  { src: mediaPath('assets/m2-fast.mp4'), alt: 'A beautiful video memory of Princess', caption: 'My Princess', type: 'video' }
 ];
 
 export const birthdayWishes = [

@@ -310,7 +310,8 @@ button {
 
 .polaroid img,
 .polaroid video,
-.gallery-placeholder {
+.gallery-placeholder,
+.video-placeholder {
   aspect-ratio: 4 / 3;
   width: 100%;
   border-radius: 0.45rem;
@@ -324,8 +325,25 @@ button {
   color: #8b1e3f;
 }
 
-.gallery-placeholder svg {
+.video-placeholder {
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(139, 30, 63, 0.78), rgba(110, 43, 133, 0.72)),
+    radial-gradient(circle at 50% 35%, rgba(215, 166, 66, 0.42), transparent 48%);
+  color: #fff7eb;
+}
+
+.gallery-placeholder svg,
+.video-placeholder svg {
   margin-bottom: 0.3rem;
+}
+
+.video-placeholder svg {
+  height: 2.5rem;
+  width: 2.5rem;
+  color: #f6c96b;
+  filter: drop-shadow(0 0 14px rgba(246, 201, 107, 0.45));
 }
 
 .polaroid > span {
@@ -458,7 +476,7 @@ button {
   padding: 1.25rem;
   background:
     linear-gradient(90deg, rgba(255, 247, 235, 0.94), rgba(248, 220, 229, 0.82) 48%, rgba(110, 43, 133, 0.22)),
-    var(--hero-bg-image, url('/Princess/assets/romantic-hero.png')) center/cover no-repeat;
+    var(--hero-bg-image) center/cover no-repeat;
 }
 
 .password-card {

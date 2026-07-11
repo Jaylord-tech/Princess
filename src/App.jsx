@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Cake, Camera, Gift, Heart, PartyPopper, Sparkles } from 'lucide-react';
+import { Cake, Camera, Gift, Heart, PartyPopper, PlayCircle, Sparkles } from 'lucide-react';
 import CustomCursor from './components/CustomCursor';
 import FloatingDecor from './components/FloatingDecor';
 import Lightbox from './components/Lightbox';
@@ -99,10 +99,15 @@ function GalleryMedia({ image, index }) {
   }
 
   if (isVideo) {
-    return <video src={image.src} muted playsInline preload="metadata" aria-label={image.alt} onError={() => setFailed(true)} />;
+    return (
+      <div className="video-placeholder">
+        <PlayCircle aria-hidden="true" />
+        <span>Tap to play</span>
+      </div>
+    );
   }
 
-  return <img src={image.src} alt={image.alt} onError={() => setFailed(true)} />;
+  return <img src={image.src} alt={image.alt} loading="lazy" decoding="async" onError={() => setFailed(true)} />;
 }
 
 function ConfettiCanvas() {
@@ -198,7 +203,7 @@ function Hero({ onOpenSurprise }) {
 
         <motion.div className="photo-orbit hero-photo-orbit mx-auto w-full max-w-md" initial={{ opacity: 0, scale: 0.9, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.9, delay: 0.45 }}>
           <figure className="hero-photo">
-            <img src={birthdayConfig.heroImage.src} alt={birthdayConfig.heroImage.alt} />
+            <img src={birthdayConfig.heroImage.src} alt={birthdayConfig.heroImage.alt} fetchPriority="high" decoding="async" />
           </figure>
         </motion.div>
         <button
