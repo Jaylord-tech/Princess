@@ -31,7 +31,7 @@ export const galleryImages = [
   // Add photos/videos to public/assets as m1.png through m5.png, or update the paths below.
   { src: '/assets/m1.png', alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
   { src: '/assets/m2.png', alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
-  { src: '/assets/m3.png', alt: 'A treasured memory with Princess', caption: 'A memory I will always treasure' },
+  { src: '/assets/m3.mov', alt: 'A treasured video memory with Princess', caption: 'A memory I will always treasure', type: 'video' },
   { src: '/assets/m4.png', alt: 'A beautiful moment with my favourite person', caption: 'My favourite person' },
   { src: '/assets/m2.mov', alt: 'A beautiful video memory of Princess', caption: 'My Princess', type: 'video' }
 ];
