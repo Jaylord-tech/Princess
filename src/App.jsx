@@ -269,7 +269,13 @@ function GallerySection() {
                   whileHover={{ y: -8, rotate: index % 2 === 0 ? -1.5 : 1.5, scale: 1.025 }}
                   aria-label={`Open preview: ${image.caption}`}
                 >
-                  {image.src ? <img src={image.src} alt={image.alt} /> : <div className="gallery-placeholder"><Camera aria-hidden="true" /><span>Photo {index + 1}</span></div>}
+                  {image.src && (image.type === 'video' || /\.(mp4|mov|webm|ogg)$/i.test(image.src)) ? (
+                    <video src={image.src} muted playsInline preload="metadata" aria-label={image.alt} />
+                  ) : image.src ? (
+                    <img src={image.src} alt={image.alt} />
+                  ) : (
+                    <div className="gallery-placeholder"><Camera aria-hidden="true" /><span>Photo {index + 1}</span></div>
+                  )}
                   <span>{image.caption}</span>
                 </motion.button>
               ))}
