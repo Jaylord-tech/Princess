@@ -116,6 +116,14 @@ button {
   box-shadow: 0 24px 58px rgba(139, 30, 63, 0.2);
 }
 
+.desktop-surprise-button {
+  display: inline-flex;
+}
+
+.mobile-surprise-button {
+  display: none;
+}
+
 .glass-card {
   border: 1px solid rgba(255, 255, 255, 0.68);
   border-radius: 1.75rem;
@@ -679,6 +687,14 @@ button {
     min-height: 3.1rem;
     padding: 0.9rem 1rem;
     font-size: 0.95rem;
+  }
+
+  .desktop-surprise-button {
+    display: none !important;
+  }
+
+  .mobile-surprise-button {
+    display: inline-flex !important;
   }
 
   .glass-card {

@@ -194,7 +194,7 @@ function Hero({ onOpenSurprise }) {
             Today, the world celebrates the day someone truly beautiful, loving, special, and unforgettable was born.
           </p>
           <button
-            className="primary-button mt-8 hidden md:inline-flex"
+            className="primary-button desktop-surprise-button mt-8"
             onClick={onOpenSurprise}
           >
             <Gift size={19} aria-hidden="true" /> Open Your Birthday Surprise
@@ -207,7 +207,7 @@ function Hero({ onOpenSurprise }) {
           </figure>
         </motion.div>
         <button
-          className="primary-button hero-surprise-button md:hidden"
+          className="primary-button mobile-surprise-button hero-surprise-button"
           onClick={onOpenSurprise}
         >
           <Gift size={19} aria-hidden="true" /> Open Your Birthday Surprise
