@@ -380,7 +380,7 @@ export default function App() {
         <FinalSection />
       </main>
       <footer className="bg-burgundy px-5 py-8 text-center text-sm text-white/80">
-        Made with endless love for Akinwumi Oluwabukolami Princess ♥ {new Date().getFullYear()}
+        Made with endless love for Akinwumi Oluwabukolami Princess by her love, JAY ♥ {new Date().getFullYear()}
       </footer>
       <MusicControl />
     </>
