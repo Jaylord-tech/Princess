@@ -1,11 +1,14 @@
 import { Cake, Crown, Gem, Heart, Infinity, Sparkles, Star, Sun } from 'lucide-react';
 
+const mediaPath = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 export const birthdayConfig = {
   songTitle: 'Fall For You',
   songArtist: 'Neriel',
-  backgroundSong: '/love-song.mp4',
+  backgroundSong: mediaPath('love-song.mp4'),
+  heroBackground: mediaPath('assets/romantic-hero.png'),
   heroImage: {
-    src: '/assets/image.png',
+    src: mediaPath('assets/image.png'),
     alt: 'Akinwumi Oluwabukolami Princess smiling at her birthday celebration'
   }
 };
@@ -29,11 +32,11 @@ export const reasons = [
 
 export const galleryImages = [
   // Add photos/videos to public/assets as m1.png through m5.png, or update the paths below.
-  { src: '/assets/m2.png', alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
-  { src: '/assets/m1.png', alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
-  { src: '/assets/m3.mov', alt: 'A treasured video memory with Princess', caption: 'A memory I will always treasure', type: 'video' },
-  { src: '/assets/m4.mp4', alt: 'A beautiful moment with my favourite person', caption: 'My favourite person' },
-  { src: '/assets/m2.mov', alt: 'A beautiful video memory of Princess', caption: 'My Princess', type: 'video' }
+  { src: mediaPath('assets/m2.png'), alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
+  { src: mediaPath('assets/m1.png'), alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
+  { src: mediaPath('assets/m3.mov'), alt: 'A treasured video memory with Princess', caption: 'A memory I will always treasure', type: 'video' },
+  { src: mediaPath('assets/m4.mp4'), alt: 'A beautiful moment with my favourite person', caption: 'My favourite person', type: 'video' },
+  { src: mediaPath('assets/m2.mov'), alt: 'A beautiful video memory of Princess', caption: 'My Princess', type: 'video' }
 ];
 
 export const birthdayWishes = [

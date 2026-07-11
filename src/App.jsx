@@ -85,6 +85,26 @@ function TypewriterText({ text, className, delay = 0, speed = 75, cycleDuration 
   );
 }
 
+function GalleryMedia({ image, index }) {
+  const [failed, setFailed] = useState(false);
+  const isVideo = image.type === 'video' || /\.(mp4|mov|webm|ogg)$/i.test(image.src || '');
+
+  if (!image.src || failed) {
+    return (
+      <div className="gallery-placeholder">
+        <Camera aria-hidden="true" />
+        <span>Photo {index + 1}</span>
+      </div>
+    );
+  }
+
+  if (isVideo) {
+    return <video src={image.src} muted playsInline preload="metadata" aria-label={image.alt} onError={() => setFailed(true)} />;
+  }
+
+  return <img src={image.src} alt={image.alt} onError={() => setFailed(true)} />;
+}
+
 function ConfettiCanvas() {
   useEffect(() => {
     const canvas = document.createElement('canvas');
@@ -148,7 +168,11 @@ function ConfettiCanvas() {
 
 function Hero({ onOpenSurprise }) {
   return (
-    <section id="top" className="animated-section hero-section relative isolate min-h-dvh overflow-hidden">
+    <section
+      id="top"
+      className="animated-section hero-section relative isolate min-h-dvh overflow-hidden"
+      style={{ '--hero-bg-image': `url("${birthdayConfig.heroBackground}")` }}
+    >
       <FloatingDecor />
       <div className="relative z-10 mx-auto grid min-h-dvh max-w-7xl items-center gap-8 px-5 py-16 sm:py-20 md:grid-cols-[1.05fr_0.95fr] md:px-8 md:py-24">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.25 }}>
@@ -266,13 +290,7 @@ function GallerySection() {
                   whileHover={{ y: -8, rotate: index % 2 === 0 ? -1.5 : 1.5, scale: 1.025 }}
                   aria-label={`Open preview: ${image.caption}`}
                 >
-                  {image.src && (image.type === 'video' || /\.(mp4|mov|webm|ogg)$/i.test(image.src)) ? (
-                    <video src={image.src} muted playsInline preload="metadata" aria-label={image.alt} />
-                  ) : image.src ? (
-                    <img src={image.src} alt={image.alt} />
-                  ) : (
-                    <div className="gallery-placeholder"><Camera aria-hidden="true" /><span>Photo {index + 1}</span></div>
-                  )}
+                  <GalleryMedia image={image} index={index} />
                   <span>{image.caption}</span>
                 </motion.button>
               ))}

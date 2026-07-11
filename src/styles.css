@@ -34,7 +34,7 @@ button {
 .hero-section {
   background:
     linear-gradient(90deg, rgba(255, 247, 235, 0.94), rgba(248, 220, 229, 0.78) 46%, rgba(110, 43, 133, 0.28)),
-    url('/assets/romantic-hero.png') center/cover no-repeat;
+    var(--hero-bg-image) center/cover no-repeat;
 }
 
 .final-section {
@@ -610,7 +610,7 @@ button {
   .hero-section {
     background:
       linear-gradient(180deg, rgba(255, 247, 235, 0.96), rgba(248, 220, 229, 0.9) 48%, rgba(255, 247, 235, 0.86)),
-      url('/assets/romantic-hero.png') 68% center/cover no-repeat;
+      var(--hero-bg-image) 68% center/cover no-repeat;
   }
 
   .primary-button {
