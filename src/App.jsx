@@ -377,7 +377,7 @@ function PasswordGate({ onUnlock }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (password === 'Arike') {
+    if (password === 'Ajike') {
       setError('');
       onUnlock();
       return;
