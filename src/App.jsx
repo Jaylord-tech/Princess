@@ -365,9 +365,52 @@ function FinalSection() {
   );
 }
 
+function PasswordGate({ onUnlock }) {
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password === 'Arike') {
+      setError('');
+      onUnlock();
+      return;
+    }
+    setError('That is not the password.');
+  };
+
+  return (
+    <main className="password-gate" style={{ '--hero-bg-image': `url("${birthdayConfig.heroBackground}")` }}>
+      <FloatingDecor />
+      <form className="password-card" onSubmit={handleSubmit}>
+        <Sparkles className="mx-auto mb-4 text-gold" size={34} aria-hidden="true" />
+        <p className="mb-2 text-sm font-semibold uppercase tracking-[0.25em] text-gold">Private birthday page</p>
+        <h1 className="font-display text-4xl leading-tight text-burgundy md:text-5xl">For Princess Only</h1>
+        <label className="mt-7 block text-left text-sm font-semibold text-burgundy" htmlFor="birthday-password">
+          Enter password
+        </label>
+        <input
+          id="birthday-password"
+          className="password-input"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          autoComplete="off"
+          autoFocus
+        />
+        {error && <p className="mt-3 text-sm font-semibold text-burgundy">{error}</p>}
+        <button className="primary-button mt-6 w-full" type="submit">
+          <Heart size={18} aria-hidden="true" /> Enter
+        </button>
+      </form>
+    </main>
+  );
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [surpriseOpened, setSurpriseOpened] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
   const reducedMotion = useReducedMotion();
 
   const handleOpenSurprise = () => {
@@ -395,22 +438,28 @@ export default function App() {
       <LoadingScreen visible={loading} />
       <CustomCursor />
       <ConfettiCanvas />
-      <main>
-        <Hero onOpenSurprise={handleOpenSurprise} />
-        {surpriseOpened && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7 }}>
-            <MessageSection />
-            <ReasonsSection />
-            <GallerySection />
-            <WishesSection />
-            <FinalSection />
-          </motion.div>
-        )}
-      </main>
-      <footer className="bg-burgundy px-5 py-8 text-center text-sm text-white/80">
-        Made with endless love for Akinwumi Oluwabukolami Princess by her love, JAY ♥ {new Date().getFullYear()}
-      </footer>
-      <MusicControl />
+      {!unlocked ? (
+        <PasswordGate onUnlock={() => setUnlocked(true)} />
+      ) : (
+        <>
+          <main>
+            <Hero onOpenSurprise={handleOpenSurprise} />
+            {surpriseOpened && (
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7 }}>
+                <MessageSection />
+                <ReasonsSection />
+                <GallerySection />
+                <WishesSection />
+                <FinalSection />
+              </motion.div>
+            )}
+          </main>
+          <footer className="bg-burgundy px-5 py-8 text-center text-sm text-white/80">
+            Made with endless love for Akinwumi Oluwabukolami Princess by her love, JAY ♥ {new Date().getFullYear()}
+          </footer>
+          <MusicControl />
+        </>
+      )}
     </>
   );
 }
