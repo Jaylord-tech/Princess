@@ -6,6 +6,6 @@ export default defineConfig({
   base: '/Princess/',
   build: {
     outDir: 'docs',
-    emptyOutDir: true
-  }
+    emptyOutDir: true,
+  },
 });
