@@ -28,15 +28,12 @@ export const reasons = [
 ];
 
 export const galleryImages = [
-  // Add photos to public/assets and set src to values like '/assets/photo-1.jpg'.
-  { src: '', alt: 'A favourite birthday memory placeholder', caption: 'One of my favourite moments' },
-  { src: '', alt: 'Beautiful smile photo placeholder', caption: 'That beautiful smile' },
-  { src: '', alt: 'Treasured memory photo placeholder', caption: 'A memory I will always treasure' },
-  { src: '', alt: 'My favourite person photo placeholder', caption: 'My favourite person' },
-  { src: '', alt: 'Together photo placeholder', caption: 'Together is my favourite place' },
-  { src: '', alt: 'Beautiful inside and out photo placeholder', caption: 'Beautiful inside and out' },
-  { src: '', alt: 'Future memories photo placeholder', caption: 'More memories to come' },
-  { src: '', alt: 'My Princess photo placeholder', caption: 'My Princess' }
+  // Add photos to public/assets as m1.png through m5.png.
+  { src: '/assets/m1.png', alt: 'A favourite birthday memory with Princess', caption: 'One of my favourite moments' },
+  { src: '/assets/m2.png', alt: 'Princess smiling beautifully', caption: 'That beautiful smile' },
+  { src: '/assets/m3.png', alt: 'A treasured memory with Princess', caption: 'A memory I will always treasure' },
+  { src: '/assets/m4.png', alt: 'A beautiful moment with my favourite person', caption: 'My favourite person' },
+  { src: '/assets/m5.png', alt: 'A beautiful memory of Princess', caption: 'My Princess' }
 ];
 
 export const birthdayWishes = [
