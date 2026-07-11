@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Music, Pause, Play, Volume2, VolumeX } from 'lucide-react';
 import { birthdayConfig } from '../data/siteData';
 
-export default function MusicControl() {
+export default function MusicControl({ autoStart = false }) {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
@@ -12,6 +12,19 @@ export default function MusicControl() {
   useEffect(() => {
     if (audioRef.current) audioRef.current.muted = muted;
   }, [muted]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!autoStart || !audio || isPlaying) return;
+
+    setShowPrompt(false);
+    audio.play()
+      .then(() => setIsPlaying(true))
+      .catch(() => {
+        setIsPlaying(false);
+        setShowPrompt(true);
+      });
+  }, [autoStart, isPlaying]);
 
   const togglePlay = async () => {
     const audio = audioRef.current;

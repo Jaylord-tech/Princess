@@ -468,7 +468,7 @@ export default function App() {
           <footer className="bg-burgundy px-5 py-8 text-center text-sm text-white/80">
             Made with endless love for Akinwumi Oluwabukolami Princess by her love, JAY ♥ {new Date().getFullYear()}
           </footer>
-          <MusicControl />
+          <MusicControl autoStart />
         </>
       )}
     </>
