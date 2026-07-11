@@ -684,6 +684,15 @@ button {
     padding: 0.5rem;
   }
 
+  .hero-photo-orbit {
+    order: 2;
+    margin-top: 0.5rem;
+  }
+
+  .hero-surprise-button {
+    order: 3;
+  }
+
   .photo-placeholder {
     min-height: 18rem;
     border-radius: 1.25rem;

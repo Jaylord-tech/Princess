@@ -189,18 +189,24 @@ function Hero({ onOpenSurprise }) {
             Today, the world celebrates the day someone truly beautiful, loving, special, and unforgettable was born.
           </p>
           <button
-            className="primary-button mt-8"
+            className="primary-button mt-8 hidden md:inline-flex"
             onClick={onOpenSurprise}
           >
             <Gift size={19} aria-hidden="true" /> Open Your Birthday Surprise
           </button>
         </motion.div>
 
-        <motion.div className="photo-orbit mx-auto w-full max-w-md" initial={{ opacity: 0, scale: 0.9, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.9, delay: 0.45 }}>
+        <motion.div className="photo-orbit hero-photo-orbit mx-auto w-full max-w-md" initial={{ opacity: 0, scale: 0.9, rotate: 3 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.9, delay: 0.45 }}>
           <figure className="hero-photo">
             <img src={birthdayConfig.heroImage.src} alt={birthdayConfig.heroImage.alt} />
           </figure>
         </motion.div>
+        <button
+          className="primary-button hero-surprise-button md:hidden"
+          onClick={onOpenSurprise}
+        >
+          <Gift size={19} aria-hidden="true" /> Open Your Birthday Surprise
+        </button>
       </div>
     </section>
   );
